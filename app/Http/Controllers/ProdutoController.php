@@ -34,4 +34,14 @@ class ProdutoController extends Controller
         $produto = Produto::create($produtoData);
         return response()->json(['produto'=>$produto], 201);
     }
+    public function retornarTudo(){
+        $produto = Produto::all();
+
+        if(count($produto)==0){
+            return response()->json([
+                'status'=> false,
+                'message'=> "produto não encontrado"
+            ]);
+        }
+    }
 }
